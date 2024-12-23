@@ -8,22 +8,30 @@
         <div class="row">
             <div class="col-6">
                 <h1>Contact US</h1>
-                <form onsubmit="Kontakt(event)">
+                {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+                <form method="Post">
+                {% csrf_token %}
                     <div class="mb-3">
                         <label for="emri" class="form-label">First Name</label>
-                        <input type="text" id="emri" class="form-control">
+                        <input type="text" id="emri" class="form-control" name ="first-name">
                     </div>
                     <div class="mb-3">
                         <label for="mbiemri" class="form-label">Last Name</label>
-                        <input type="text" id="mbiemri" class="form-control">
+                        <input type="text" id="mbiemri" class="form-control" name="mbiemri">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" class="form-control">
+                        <input type="email" id="email" class="form-control" name ="email">
                     </div>
                     <div class="mb-3">
                         <label for="koment" class="form-label">Comment</label>
-                        <textarea id="koment" class="form-control"></textarea>
+                        <textarea id="koment" class="form-control" name = "koment"></textarea>
                     </div>
                     <input type="submit" value="Send" class="btn btn-primary">
                 </form>

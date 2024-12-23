@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'index.html'%}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>{{categoryDetail.category_name}}</h1>
+    <div class="row">
+        {% for item in categoryItem %}
+            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                <div class="card h-100">
+                    <img src="{{item.item_image.url}}" class="card-img-top h-100" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.item_name}}</h5>
+                        <p class="card-text">{{item.item_description}}</p>
+                        {% for color  in item.itemcolor.all %}
+                        <p>{{color}}</p>
+                        {% endfor %}
+                    
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
